@@ -8,7 +8,12 @@ async function bootstrapApi() {
 }
 
 async function bootstrapWebSocket() {
-  const app = await NestFactory.create(WebSocketModule, { cors: true });
+  const app = await NestFactory.create(WebSocketModule);
+  app.enableCors({
+    origin: '*', // Allow requests from all origins,
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    allowedHeaders: 'Content-Type,Authorization',
+  });
   await app.listen(3001);
 }
 
