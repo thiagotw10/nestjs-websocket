@@ -10,7 +10,7 @@ async function bootstrapApi() {
 async function bootstrapWebSocket() {
   const app = await NestFactory.create(WebSocketModule);
   app.enableCors({
-    origin: '*', // Allow requests from all origins,
+    origin: 'https://54e0-168-196-85-137.ngrok-free.app', // Allow requests from all origins,
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     allowedHeaders: 'Content-Type,Authorization',
   });
