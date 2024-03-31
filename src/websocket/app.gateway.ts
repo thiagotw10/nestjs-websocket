@@ -20,6 +20,7 @@ export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect {
   private storedPayload: any;
 
   handleConnection(client: any) {
+    client.emit('custom-header', '69420');
     console.log('Cliente conectado:', client.id);
     if (this.storedPayload) {
       client.emit('chatMessage', this.storedPayload);
