@@ -8,7 +8,13 @@ import {
 } from '@nestjs/websockets';
 import { Server } from 'socket.io';
 
-@WebSocketGateway({ cors: { origin: '*' } })
+@WebSocketGateway({
+  cors: {
+    origin: '*',
+    credentials: true,
+  },
+  transports: ['websocket', 'polling'],
+})
 export class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect {
   @WebSocketServer() server: Server;
   private storedPayload: any;
